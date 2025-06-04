@@ -17,7 +17,7 @@ Create a fully functional Maven project in Java 21 using Spring Boot, following 
     - Output ports (interfaces only).
 - `model` package:
   - Contains:
-    - Rich domain entities (e.g., `Stock`, `StockSymbol`, etc.).
+    - Rich domain entities. 
     - Value objects and domain-level exceptions.
 
 ### Adapters:
