@@ -1,4 +1,4 @@
-package com.example.stockhexagonal.core.usecase;
+package com.example.stockhexagonal.application.port.out;
 
 /**
  * Exception thrown when a requested stock symbol cannot be found

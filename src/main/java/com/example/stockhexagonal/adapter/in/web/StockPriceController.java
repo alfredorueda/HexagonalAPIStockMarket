@@ -1,8 +1,9 @@
 package com.example.stockhexagonal.adapter.in.web;
 
-import com.example.stockhexagonal.core.model.StockPrice;
-import com.example.stockhexagonal.core.usecase.GetStockPriceUseCase;
-import com.example.stockhexagonal.core.usecase.StockNotFoundException;
+import com.example.stockhexagonal.application.port.in.GetStockPriceUseCase;
+import com.example.stockhexagonal.application.port.out.StockNotFoundException;
+import com.example.stockhexagonal.model.StockPrice;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -10,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

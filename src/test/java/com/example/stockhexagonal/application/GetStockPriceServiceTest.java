@@ -1,10 +1,11 @@
-package com.example.stockhexagonal.core.service;
+package com.example.stockhexagonal.application;
 
 import com.example.stockhexagonal.adapter.out.mock.MockStockPriceAdapter;
-import com.example.stockhexagonal.core.model.StockPrice;
-import com.example.stockhexagonal.core.usecase.GetStockPriceUseCase;
-import com.example.stockhexagonal.core.usecase.StockNotFoundException;
-import com.example.stockhexagonal.port.out.StockPricePort;
+import com.example.stockhexagonal.application.port.in.GetStockPriceUseCase;
+import com.example.stockhexagonal.application.port.out.StockNotFoundException;
+import com.example.stockhexagonal.application.port.out.StockPriceProviderPort;
+import com.example.stockhexagonal.model.StockPrice;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Unit test for GetStockPriceUseCase implementation using MockStockPriceAdapter
  */
-class StockPriceServiceTest {
+class GetStockPriceServiceTest {
 
     private GetStockPriceUseCase getStockPriceUseCase;
-    private StockPricePort stockPricePort;
+    private StockPriceProviderPort stockPriceProviderPort;
 
     @BeforeEach
     void setUp() {
-        stockPricePort = new MockStockPriceAdapter();
-        getStockPriceUseCase = new StockPriceService(stockPricePort);
+        stockPriceProviderPort = new MockStockPriceAdapter();
+        getStockPriceUseCase = new GetStockPriceService(stockPriceProviderPort);
     }
 
     @Test

@@ -1,6 +1,7 @@
-package com.example.stockhexagonal.core.usecase;
+package com.example.stockhexagonal.application.port.in;
 
-import com.example.stockhexagonal.core.model.StockPrice;
+import com.example.stockhexagonal.model.StockPrice;
+import com.example.stockhexagonal.application.port.out.StockNotFoundException;
 
 /**
  * Primary port (input) for retrieving stock price information
