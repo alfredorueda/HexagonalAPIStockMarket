@@ -30,8 +30,7 @@ Implement a new use case that retrieves the current stock prices of all companie
 ### 3. Secondary Adapter: InMemoryUserRepository
 - Implements `LoadUserPort`.
 - Internally uses a `Map<String, User>` preloaded with 2–3 demo users:
-  - e.g., `"alice"` → ["AAPL", "MSFT"]
-  - e.g., `"bob"` → ["GOOGL", "AMZN"]
+ 
 
 ### 4. Primary Adapter: REST Controller
 - Create a new controller:
