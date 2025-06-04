@@ -45,7 +45,7 @@ Implement a new use case that retrieves the current stock prices of all companie
 
 ### 6. Architecture and Clean Code Guidelines
 - Use only Spring Boot, no Lombok.
-- Respect strict separation: REST and repositories are adapters, business logic stays in application layer, and domain is clean.
+- Respect strict separation: REST and repositories are adapters, business logic use cases stays in application layer, and domain is clean.
 - Use Spring profiles (`mock`, `finhub`) to switch implementations of `StockPriceProviderPort`.
 
 ### 7. Testing
