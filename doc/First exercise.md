@@ -20,14 +20,14 @@ Create a fully functional Maven project in Java 21 using Spring Boot, following 
     - Rich domain entities. 
     - Value objects and domain-level exceptions.
 
-### Adapters:
+- 'adapters package:
 
-- Primary adapter:
-  - A Spring REST controller that exposes an endpoint to query stock prices.
-- Secondary adapters:
-  - `FinhubStockPriceAdapter` → fetches real data from the FinHub API using HTTP.
+  - Primary adapter:
+    - A Spring REST controller that exposes an endpoint to query stock prices.
+  - Secondary adapters:
+    - `FinhubStockPriceAdapter` → fetches real data from the FinHub API using HTTP.
   - `MockStockPriceAdapter` → returns dummy values for testing/demo purposes.
-- Adapters should implement the appropriate interfaces defined in the `application.port.out` package.
+  - Adapters should implement the appropriate interfaces defined in the `application.port.out` package.
 
 ### Behavior:
 
