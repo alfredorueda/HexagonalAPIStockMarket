@@ -20,7 +20,7 @@ Create a fully functional Maven project in Java 21 using Spring Boot, following 
     - Rich domain entities. 
     - Value objects and domain-level exceptions.
 
-- 'adapters package:
+- `adapters` package:
 
   - Primary adapter:
     - A Spring REST controller that exposes an endpoint to query stock prices.
