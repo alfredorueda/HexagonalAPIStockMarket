@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Domain model class representing a user with investments
@@ -27,7 +28,11 @@ public class User {
         if (companySymbols == null) {
             this.companySymbols = new ArrayList<>();
         } else {
-            this.companySymbols = new ArrayList<>(companySymbols);
+            // Use streams to normalize all symbols to uppercase
+            this.companySymbols = companySymbols.stream()
+                .filter(Objects::nonNull)
+                .map(String::toUpperCase)
+                .collect(Collectors.toCollection(ArrayList::new));
         }
     }
 

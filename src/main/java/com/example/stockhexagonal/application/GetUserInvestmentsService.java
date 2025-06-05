@@ -10,7 +10,6 @@ import com.example.stockhexagonal.model.User;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +17,9 @@ import java.util.stream.Collectors;
  * Implementation of the GetUserInvestmentsUseCase that coordinates between
  * loading user data and fetching current stock prices
  */
+// TODO: Create an annotation to abstract the Use Case and avoid specific Spring annotations
+// inside the application layer (see BuckPal)
+
 @Service
 public class GetUserInvestmentsService implements GetUserInvestmentsUseCase {
 
@@ -39,26 +41,25 @@ public class GetUserInvestmentsService implements GetUserInvestmentsUseCase {
         User user = loadUserPort.loadUserById(userId)
                 .orElseThrow(() -> new UserNotFoundException(userId));
 
-        // Fetch current stock prices for all user's company symbols
-        List<InvestmentDto> investments = new ArrayList<>();
-        
-        for (String symbol : user.getCompanySymbols()) {
-            try {
-                StockPrice stockPrice = stockPriceProviderPort.fetchStockPrice(symbol);
-                
-                InvestmentDto investment = new InvestmentDto(
-                    stockPrice.getSymbol(),
-                    stockPrice.getCurrentPrice(),
-                    stockPrice.getCurrency(),
-                    stockPrice.getTimestamp()
-                );
-                
-                investments.add(investment);
-            } catch (StockNotFoundException e) {
-                // Log the error but continue processing other symbols
-                System.err.println("Could not fetch price for symbol: " + symbol + ". " + e.getMessage());
-            }
-        }
+        // Fetch current stock prices for all user's company symbols using streams
+        List<InvestmentDto> investments = user.getCompanySymbols().stream()
+            .map(symbol -> {
+                try {
+                    StockPrice stockPrice = stockPriceProviderPort.fetchStockPrice(symbol);
+                    return new InvestmentDto(
+                        stockPrice.getSymbol(),
+                        stockPrice.getCurrentPrice(),
+                        stockPrice.getCurrency(),
+                        stockPrice.getTimestamp()
+                    );
+                } catch (StockNotFoundException e) {
+                    // Log the error but continue processing other symbols
+                    System.err.println("Could not fetch price for symbol: " + symbol + ". " + e.getMessage());
+                    return null;
+                }
+            })
+            .filter(investment -> investment != null)
+            .collect(Collectors.toList());
 
         // Return the combined user information with investment data
         return new UserInvestmentsDto(
