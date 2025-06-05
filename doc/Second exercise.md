@@ -30,8 +30,7 @@ Implement a new use case that retrieves the current stock prices of all companie
 ### 3. Secondary Adapter: InMemoryUserRepository
 - Implements `LoadUserPort`.
 - Internally uses a `Map<String, User>` preloaded with 2–3 demo users:
-  - e.g., `"alice"` → ["AAPL", "MSFT"]
-  - e.g., `"bob"` → ["GOOGL", "AMZN"]
+ 
 
 ### 4. Primary Adapter: REST Controller
 - Create a new controller:
@@ -46,7 +45,7 @@ Implement a new use case that retrieves the current stock prices of all companie
 
 ### 6. Architecture and Clean Code Guidelines
 - Use only Spring Boot, no Lombok.
-- Respect strict separation: REST and repositories are adapters, business logic stays in application layer, and domain is clean.
+- Respect strict separation: REST and repositories are adapters, business logic use cases stays in application layer, and domain is clean.
 - Use Spring profiles (`mock`, `finhub`) to switch implementations of `StockPriceProviderPort`.
 
 ### 7. Testing
